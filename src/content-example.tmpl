@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+              
+        <h1>HIVE Content Example</h1>
+        
+        <h2>Summary</h2>
+        
+        <table class="table table-striped">
+            <tbody>
+                <% _(result).each(function (value, key, object) { %>
+                <tr>
+                    <th><%- key %></th>
+                    <td><%- value %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        
+        <h2>Active Voters</h2>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Voter</th>
+                    <th>Reputation</th>
+                    <th>Percent</th>
+                    <th>RShares</th>
+                    <th>Weight</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _(result.active_votes).each(function (vote) { %>
+                <tr>
+                    <td><%- vote.voter %></td>
+                    <td><%- numeral(vote.reputation).format('0,0') %></td>
+                    <td><%- numeral(vote.percent).format('0%') %></td>
+                    <td><%- numeral(vote.rshares).format('0,0') %></td>
+                    <td><%- numeral(vote.weight).format('0,0') %></td>
+                    <td><%- moment(vote.time).format('MMMM Do YYYY, h:mm:ss a') %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+    </div>
+  </div>
+</div>
